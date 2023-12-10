@@ -1,6 +1,12 @@
 import streamlit as st
 from horizontal import create_trajectory_dataframe, HorizontalProjection
 
+st.set_page_config(
+    page_title="Physic streamlit - Horizontal Projection",
+    page_icon="icon.png",
+)
+
+
 st.title("Calculate Horizontal Projection")
 
 st.sidebar.write(
@@ -60,8 +66,3 @@ elif ev < 2:
     st.info("Add at least 2 numbers to get result (g value doesn't count)")
 else:
     st.exception("Too many values you can only add 2 (g value doesn't count)")
-
-
-st.latex(r'''
-
-''')

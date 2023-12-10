@@ -78,3 +78,7 @@ def create_trajectory_dataframe(hp: HorizontalProjection, num_points: int = 1000
     df = pd.DataFrame(data)
 
     return df
+
+
+def create_road_time_dataframe(hp: HorizontalProjection, num_points: int = 1000) -> pd.DataFrame:
+    pass
