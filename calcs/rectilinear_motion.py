@@ -1,5 +1,4 @@
 import math
-from typing import Optional
 import pandas as pd
 
 
@@ -20,12 +19,12 @@ def calculate_avg_acceleration(ve: float, vs: float, te: float, ts: float) -> fl
 
 def calculate_free_fall_total_time(h: float, g: float = 9.81) -> float:
     # sqrt(2*h / g)
-    return math.sqrt((2*h) / g)
+    return math.sqrt((2 * h) / g)
 
 
 def calculate_free_fall_ending_speed(h: float, g: float = 9.81) -> float:
     # sqrt(2*h*g)
-    return math.sqrt(2*h*g)
+    return math.sqrt(2 * h * g)
 
 
 def free_fall_trajectory(t: float, g: float = 9.81) -> pd.DataFrame:
