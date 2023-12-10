@@ -14,6 +14,9 @@ class HorizontalProjection:
             s: Optional[float] = None,
     ):
         self.g = g
+        if self.g == 0:
+            raise ValueError("Gravity can't be equal 0.")
+
         self.v0 = v0
         self.h0 = h0
         self.t = t

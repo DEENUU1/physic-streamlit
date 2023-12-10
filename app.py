@@ -3,6 +3,7 @@ from horizontal import create_trajectory_dataframe, HorizontalProjection
 
 st.title("Calculate Horizontal Projection")
 
+st.sidebar.number_input("g = (you don't need change this value)", key="g", value=9.81)
 st.sidebar.number_input("v0 = ...", key="v0", value=None)
 st.sidebar.number_input("t = ...", key="t", value=None)
 st.sidebar.number_input("h0 = ...", key="h0", value=None)
@@ -12,15 +13,16 @@ v0 = st.session_state.v0
 t = st.session_state.t
 ho = st.session_state.h0
 s = st.session_state.s
+g = st.session_state.g
 
 
 def get_result():
-    hp = HorizontalProjection(v0=v0, t=t, h0=ho, s=s)
+    hp = HorizontalProjection(v0=v0, t=t, h0=ho, s=s, g=g)
     return hp
 
 
 def get_dataframe():
-    hp = HorizontalProjection(v0=v0, t=t, h0=ho, s=s)
+    hp = HorizontalProjection(v0=v0, t=t, h0=ho, s=s, g=g)
     return create_trajectory_dataframe(hp)
 
 
