@@ -14,10 +14,14 @@ st.set_page_config(
 )
 
 st.title("Calculate Rectilinear Motion")
-
 st.subheader("Displacement")
-st.number_input("xs = ", key="xs_displacement")
-st.number_input("xk = ", key="xk_displacement")
+with st.container():
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.number_input("Starting position", key="xs_displacement")
+    with col2:
+        st.number_input("Ending position", key="xk_displacement")
 
 xs_displacement = st.session_state.xs_displacement
 xk_displacement = st.session_state.xk_displacement
@@ -28,10 +32,15 @@ if xs_displacement and xk_displacement:
         st.success(f"Displacement: {data} m")
 
 st.subheader("Average speed")
-st.number_input("xs = ", key="xs_speed")
-st.number_input("xe = ", key="xe_speed")
-st.number_input("t = ", key="te_speed")
-st.number_input("ts = ", key="ts_speed")
+with st.container():
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.number_input("Starting position", key="xs_speed")
+        st.number_input("Ending position", key="xe_speed")
+    with col2:
+        st.number_input("Ending time", key="te_speed")
+        st.number_input("Starting time", key="ts_speed")
 
 xs_speed = st.session_state.xs_speed
 xe_speed = st.session_state.xe_speed
@@ -44,10 +53,15 @@ if xs_speed and xe_speed and te_speed and ts_speed:
         st.success(f"Average speed: {data} m/s")
 
 st.subheader("Average acceleration")
-st.number_input("xs = ", key="xs_acceleration")
-st.number_input("xe = ", key="xe_acceleration")
-st.number_input("t = ", key="te_acceleration")
-st.number_input("ts = ", key="ts_acceleration")
+
+with st.container():
+    col1, col2 = st.columns(2)
+    with col1:
+        st.number_input("Starting position", key="xs_acceleration")
+        st.number_input("Ending position", key="xe_acceleration")
+    with col2:
+        st.number_input("Ending time", key="te_acceleration")
+        st.number_input("Starting time", key="ts_acceleration")
 
 xs_acceleration = st.session_state.xs_acceleration
 xe_acceleration = st.session_state.xe_acceleration
@@ -60,8 +74,8 @@ if xs_acceleration and xe_acceleration and te_acceleration and ts_acceleration:
         st.success(f"Average acceleration: {data} m/s2")
 
 st.subheader("Free fall ending speed")
-st.number_input("h = ", key="h_speed")
-st.number_input("g = ", key="g_speed", value=9.81)
+st.number_input("Starting height", key="h_speed")
+st.number_input("Acceleration of gravity ", key="g_speed", value=9.81)
 
 h_speed = st.session_state.h_speed
 g_speed = st.session_state.g_speed
@@ -72,8 +86,12 @@ if h_speed and g_speed:
         st.success(f"Free fall ending speed: {data} m/s")
 
 st.subheader("Free fall total time")
-st.number_input("h = ", key="h_time")
-st.number_input("g = ", key="g_time", value=9.81)
+with st.container():
+    col1, col2 = st.columns(2)
+    with col1:
+        st.number_input("Starting height", key="h_time")
+    with col2:
+        st.number_input("Acceleration of gravity ", key="g_time", value=9.81)
 
 h_time = st.session_state.h_time
 g_time = st.session_state.g_time
@@ -83,8 +101,12 @@ if h_time and g_time:
         st.success(f"Free fall total time: {data} s")
 
 st.subheader("Free fall trajectory")
-st.number_input("t = ", key="t_trajectory")
-st.number_input("g = ", key="g_trajectory", value=9.81)
+with st.container():
+    col1, col2 = st.columns(2)
+    with col1:
+        st.number_input("Total time", key="t_trajectory")
+    with col2:
+        st.number_input("Acceleration of gravity ", key="g_trajectory", value=9.81)
 
 t_trajectory = st.session_state.t_trajectory
 g_trajectory = st.session_state.g_trajectory
