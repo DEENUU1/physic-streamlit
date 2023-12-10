@@ -66,11 +66,3 @@ def create_trajectory_dataframe(hp: HorizontalProjection, num_points: int = 1000
     df = pd.DataFrame(data)
 
     return df
-
-
-if __name__ == '__main__':
-    hp = HorizontalProjection(v0=20, t=3.5)
-    print(hp.calc())
-
-    trajectory_df = create_trajectory_dataframe(hp)
-    print(trajectory_df)
