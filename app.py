@@ -1,9 +1,11 @@
 import streamlit as st
 from horizontal import create_trajectory_dataframe, HorizontalProjection
-import time
 
 st.title("Calculate Horizontal Projection")
 
+st.sidebar.write(
+    "Add 2 values to get result (g doesn't count), remember about the relevant units (t - seconds, h0 - meters, v0 - meters per seconds, s - meters"
+)
 st.sidebar.number_input("g = (you don't need change this value)", key="g", value=9.81)
 st.sidebar.number_input("v0 = ...", key="v0", value=None)
 st.sidebar.number_input("t = ...", key="t", value=None)
@@ -46,11 +48,15 @@ if ev == 2:
         data = get_result()
         dataframe = get_dataframe()
 
-    st.write(data.calc())
+    calc = data.calc()
+    st.subheader(f"Starting speed: {calc["v0"]} m/s")
+    st.subheader(f"Total time: {calc['t']} s")
+    st.subheader(f"Starting height: {calc['h0']} m")
+    st.subheader(f"Total distance: {calc['s']} m")
     st.line_chart(dataframe, x="X", y="Y")
 
 
 elif ev < 2:
-    st.write("Add at least 2 numbers to get result (g value doesn't count)")
+    st.info("Add at least 2 numbers to get result (g value doesn't count)")
 else:
-    st.write("Too many values you can only add 2 (g value doesn't count)")
+    st.exception("Too many values you can only add 2 (g value doesn't count)")
