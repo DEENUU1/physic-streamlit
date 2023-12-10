@@ -60,3 +60,8 @@ elif ev < 2:
     st.info("Add at least 2 numbers to get result (g value doesn't count)")
 else:
     st.exception("Too many values you can only add 2 (g value doesn't count)")
+
+
+st.latex(r'''
+
+''')

@@ -30,17 +30,26 @@ class HorizontalProjection:
 
     def calculate(self):
         if self.v0 is not None and self.t is not None and self.h0 is None and self.s is None:
-            self.h0 = (self.g * pow(self.t, 2)) / 2
-            self.s = self.v0 * math.sqrt((2 * self.h0) / self.g)
+            self.h0 = self.get_h0()
+            self.s = self.get_s()
         elif self.v0 is not None and self.h0 is not None and self.t is None and self.s is None:
-            self.t = math.sqrt((2 * self.h0) / self.g)
+            self.t = self.get_t()
             self.s = self.v0 * self.t
         elif self.v0 is not None and self.s is not None and self.t is None and self.h0 is None:
             self.t = self.s / self.v0
-            self.h0 = (self.g * pow(self.t, 2)) / 2
+            self.h0 = self.get_h0()
         elif self.h0 is not None and self.s is not None and self.t is None and self.v0 is None:
-            self.t = math.sqrt((2 * self.h0) / self.g)
+            self.t = self.get_t()
             self.v0 = self.s / self.t
+
+    def get_s(self):
+        return self.v0 * math.sqrt((2 * self.h0) / self.g)
+
+    def get_t(self):
+        return math.sqrt((2 * self.h0) / self.g)
+
+    def get_h0(self):
+        return (self.g * pow(self.t, 2)) / 2
 
     def get_position_at_time(self, time: float) -> Tuple[float, float]:
         if self.v0 is not None and self.t is not None:
